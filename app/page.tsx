@@ -72,6 +72,10 @@ export default function Page() {
       if (hash.startsWith('details-')) {
         const id = hash.replace('details-', '');
         setSelected(id);
+        setTimeout(() => {
+          const el = document.getElementById(`details-${id}`);
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 320);
       }
     };
 
