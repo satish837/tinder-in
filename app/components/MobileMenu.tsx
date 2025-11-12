@@ -13,6 +13,7 @@ const menuItems = [
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   const closeMenu = () => setIsOpen(false);
 
