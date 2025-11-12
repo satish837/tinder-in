@@ -64,6 +64,22 @@ export default function Page() {
     }
   };
 
+  useEffect(() => {
+    const handleHash = () => {
+      if (!window || !window.location) return;
+      const hash = window.location.hash.replace('#', '');
+      if (!hash) return;
+      if (hash.startsWith('details-')) {
+        const id = hash.replace('details-', '');
+        setSelected(id);
+      }
+    };
+
+    handleHash();
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
   const emotionalContent = (
     <>
       <h4 className="text-xl md:text-2xl lg:text-3xl font-extrabold text-pinkMain text-center">
