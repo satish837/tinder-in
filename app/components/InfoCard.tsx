@@ -133,17 +133,6 @@ export default function InfoCard({
         </div>
       </div>
 
-      {expandable && (
-        <div
-          className="overflow-hidden transition-[max-height] duration-500 ease-in-out"
-          style={{ maxHeight }}
-          aria-hidden={!open}
-        >
-          <div ref={contentRef} className="px-4 md:px-6 lg:px-8 pt-6">
-            {expandedContent}
-          </div>
-        </div>
-      )}
     </article>
   );
 }
