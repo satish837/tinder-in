@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Hamburger from "hamburger-react";
 
 const menuItems = [
-  { label: "Emotional GPS", href: "/" },
+  { label: "Emotional GPS", href: "/emotional-gps" },
   { label: "Dating Playbook", href: "/safety-syllabus" },
   { label: "Dating Safety 101", href: "/irl-dating" },
 ];
@@ -13,6 +13,7 @@ const menuItems = [
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   const closeMenu = () => setIsOpen(false);
 
@@ -43,12 +44,30 @@ export default function MobileMenu() {
           <div className="bg-black">
             <ul className="flex flex-col">
               {menuItems.map((item) => {
-                const isActive = pathname === item.href;
+                const isActive = pathname === item.href || (typeof window !== 'undefined' && window.location.hash === item.href);
+                const handleClick = (e: any) => {
+                  if (item.href.startsWith('/')) {
+                    e.preventDefault();
+                    router.push(item.href);
+                    closeMenu();
+                    return;
+                  }
+
+                  if (item.href.startsWith('#')) {
+                    e.preventDefault();
+                    router.push(item.href);
+                    closeMenu();
+                    return;
+                  }
+
+                  closeMenu();
+                };
+
                 return (
                   <li key={item.href}>
                     <a
                       href={item.href}
-                      onClick={closeMenu}
+                      onClick={handleClick}
                       className={`block px-6 py-4 text-white transition-colors ${
                         isActive
                           ? "bg-white/20"
@@ -67,4 +86,3 @@ export default function MobileMenu() {
     </div>
   );
 }
-
