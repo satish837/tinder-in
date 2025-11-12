@@ -46,11 +46,10 @@ export default function Page() {
   const toggle = (id?: string) => {
     if (!id) return;
     setSelected((s) => (s === id ? null : id));
-    // scroll into view when opening
+    // scroll the panel for this card into view when opening
     if (selected !== id) {
-      // wait for DOM update then scroll
       setTimeout(() => {
-        const el = document.querySelector('#details-panel');
+        const el = document.getElementById(`details-${id}`);
         if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 320);
     }
