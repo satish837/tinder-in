@@ -1,28 +1,18 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Hamburger from "hamburger-react";
 
 const menuItems = [
-  { label: "App Academy", href: "/" },
-  { label: "Safety Syllabus", href: "/safety-syllabus" },
-  { label: "IRL Dating", href: "/irl-dating" },
-  { label: "Don't Be An Ick", href: "/dont-be-an-ick" },
-  { label: "Dating Dictionary", href: "/dating-dictionary" },
-  { label: "Astro Dating", href: "/astro-dating" },
-  { label: "Consent Course", href: "/consent-course" },
-  { label: "Love & Care", href: "/love-and-care" },
+  { label: "Emotional GPS", href: "/" },
+  { label: "Dating Playbook", href: "/safety-syllabus" },
+  { label: "Dating Safety 101", href: "/irl-dating" },
 ];
 
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-
-  const { primaryItem, secondaryItems } = useMemo(() => {
-    const [first, ...rest] = menuItems;
-    return { primaryItem: first, secondaryItems: rest };
-  }, []);
 
   const closeMenu = () => setIsOpen(false);
 
@@ -42,7 +32,7 @@ export default function MobileMenu() {
     
 
       <nav
-        className={`absolute right-0 top-0 z-40 w-[320px] max-w-[90vw] transition-all duration-300 ease-in-out ${
+        className={`absolute right-0 top-5 z-40 w-[320px] max-w-[90vw] transition-all duration-300 ease-in-out ${
           isOpen ? "translate-y-10 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
         }`}
         aria-hidden={!isOpen}
@@ -52,7 +42,7 @@ export default function MobileMenu() {
 
           <div className="bg-black">
             <ul className="flex flex-col">
-              {secondaryItems.map((item) => {
+              {menuItems.map((item) => {
                 const isActive = pathname === item.href;
                 return (
                   <li key={item.href}>
