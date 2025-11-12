@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import Hamburger from "hamburger-react";
 
 const menuItems = [
-  { label: "Emotional GPS", href: "#details-emotional" },
+  { label: "Emotional GPS", href: "/emotional-gps" },
   { label: "Dating Playbook", href: "/safety-syllabus" },
   { label: "Dating Safety 101", href: "/irl-dating" },
 ];
