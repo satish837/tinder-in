@@ -315,7 +315,7 @@ export default function Page() {
       <nav className="w-full bg-black text-white py-3 sticky top-0 z-50 shadow-md">
         <div className="max-w-6xl px-4 md:px-0 mx-auto flex items-center justify-between">
           <div className="text-lg font-bold">
-            <Image src="/tinder-logo.png" alt="Tinder" width={100} height={100} className="w-[100px] h-auto md:w-[100px]" />
+            <a href="/"><Image src="/tinder-logo.png" alt="Tinder" width={100} height={100} className="w-[100px] h-auto md:w-[100px]" /></a>
           </div>
           <MobileMenu />
         </div>
@@ -383,7 +383,7 @@ export default function Page() {
       </div>
 
       <footer className="w-full bg-black text-white py-6 md:py-8 mt-12 md:mt-16">
-        <div className="max-w-6xl mx-auto px-4 text-xs md:text-sm flex flex-col md:flex-row justify-between items-start gap-6">
+        <div className="max-w-6xl mx-auto px-0 text-xs md:text-sm flex flex-col md:flex-row justify-between items-start gap-6">
           <div className="w-full md:w-1/2">
             <p>© 2025 Tinder LLC. Tinder, Swipe, the Flame logo, Super Like, It's A Match!,<br className="hidden md:block" />
             and School of Swipe are all trademarks of Tinder LLC. All rights reserved.</p>
