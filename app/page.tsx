@@ -42,6 +42,50 @@ export default function Page() {
             subtitle="Feeling drained? <span class='inline md:block'>Here’s how to refill your cup</span>"
             image="/emotional-gps-thumb.png"
             reverse
+            expandable
+            expandedContent={(
+              <div className="bg-white/70 rounded-xl-2 md:rounded-xl shadow-card border border-[#bd084d] p-4 md:p-6 lg:p-8">
+                <h4 className="text-xl md:text-2xl lg:text-3xl font-extrabold text-pinkMain text-center">
+                  How People Really Feel About Dating, and How They Bounce Back?
+                </h4>
+
+                <div className="mt-6 grid gap-6">
+                  <section className="bg-pinkLight/20 rounded-xl p-4 md:p-6">
+                    <h5 className="text-lg md:text-xl font-extrabold text-pinkMain">Moving Too Fast</h5>
+                    <p className="mt-2 text-base md:text-lg text-gray-700">
+                      34% of Gen Z say moving too fast is the biggest mental health “ick”.
+                    </p>
+                    <p className="mt-3 text-gray-700">
+                      Dr. Chandni’s Tip: Take your time, a steady pace helps your mind and heart align. Don’t rush feelings; set the tempo that feels right for you.
+                    </p>
+                  </section>
+
+                  <section className="rounded-xl p-4 md:p-6 border border-pinkLight/40">
+                    <h5 className="text-lg md:text-xl font-extrabold text-pinkMain">Step 1: Unpack the Baggage</h5>
+                    <p className="mt-2 text-gray-700">
+                      Make space for yourself by letting go of old memories. Letting go doesn’t mean forgetting; it’s about making
+                      space for your next chapter. Dropping keepsakes, even symbolically, helps your mind release old attachments.
+                    </p>
+                    <blockquote className="mt-3 italic text-gray-700 border-l-4 border-pinkMain pl-3">
+                      “Every journey looks different—take your pace, try a step, and create your fresh start.”
+                    </blockquote>
+                  </section>
+
+                  <section className="rounded-xl p-4 md:p-6 bg-pinkLight/10 border border-pinkLight/40 text-center">
+                    <h6 className="text-lg md:text-xl font-extrabold text-pinkMain">Pick Your Mood, Make Your Move</h6>
+                    <p className="mt-2 text-gray-700">
+                      Take insights from your mind and heart with playful Mood Match Cards to guide your dating vibes and reflect on how you’re feeling today.
+                    </p>
+                    <a
+                      href="#download-cards"
+                      className="inline-flex items-center justify-center mt-4 rounded-full bg-black text-white px-5 py-3 font-semibold hover:bg-pinkMain transition-colors"
+                    >
+                      Download Cards
+                    </a>
+                  </section>
+                </div>
+              </div>
+            )}
           />
           <InfoCard
             title="Dating <span class='inline md:block'>Playbook</span>"
