@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import HeroSection from "./components/HeroSection";
 import InfoCard from "./components/InfoCard";
 import MobileMenu from "./components/MobileMenu";
