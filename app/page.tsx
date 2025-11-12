@@ -61,7 +61,7 @@ export default function Page() {
         How People Really Feel About Dating, and How They Bounce Back?
       </h4>
 
-      <div className="mt-6 grid gap-6">
+      <div className="mt-0 grid gap-6">
         <section className="bg-pinkLight/20 rounded-xl p-4 md:p-6">
           <h5 className="text-lg md:text-xl font-extrabold text-pinkMain">Moving Too Fast</h5>
           <p className="mt-2 text-base md:text-lg text-gray-700">
