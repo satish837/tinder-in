@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, ReactNode } from "react";
+import "flickity/css/flickity.css";
 
 export interface CarouselItem {
   id?: string | number;
@@ -45,7 +46,6 @@ export default function DynamicCarousel({
 
     const initFlickity = async () => {
       const Flickity = (await import("flickity")).default;
-      await import("flickity/css/flickity.css");
 
       if (carouselRef.current && !flickityInstance.current) {
         flickityInstance.current = new Flickity(carouselRef.current, {
