@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import Hamburger from "hamburger-react";
 
 const menuItems = [
-  { label: "Emotional GPS", href: "/" },
+  { label: "Emotional GPS", href: "#details-emotional" },
   { label: "Dating Playbook", href: "/safety-syllabus" },
   { label: "Dating Safety 101", href: "/irl-dating" },
 ];
@@ -67,4 +67,3 @@ export default function MobileMenu() {
     </div>
   );
 }
-
