@@ -43,12 +43,24 @@ export default function MobileMenu() {
           <div className="bg-black">
             <ul className="flex flex-col">
               {menuItems.map((item) => {
-                const isActive = pathname === item.href;
+                const isActive = pathname === item.href || (typeof window !== 'undefined' && window.location.hash === item.href);
+                const handleClick = (e: React.MouseEvent) => {
+                  // allow hash links and internal routes to be pushed via router
+                  if (item.href.startsWith('#')) {
+                    e.preventDefault();
+                    router.push(item.href);
+                    closeMenu();
+                    return;
+                  }
+                  // otherwise navigate normally
+                  closeMenu();
+                };
+
                 return (
                   <li key={item.href}>
                     <a
                       href={item.href}
-                      onClick={closeMenu}
+                      onClick={handleClick}
                       className={`block px-6 py-4 text-white transition-colors ${
                         isActive
                           ? "bg-white/20"
