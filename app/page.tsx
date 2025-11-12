@@ -44,15 +44,23 @@ function DetailsPanel({ open, children, onClose }: { open: boolean; children: Re
 export default function Page() {
   const [selected, setSelected] = useState<string | null>(null);
 
+  const router = useRouter();
+
   const toggle = (id?: string) => {
     if (!id) return;
     setSelected((s) => (s === id ? null : id));
-    // scroll the panel for this card into view when opening
+
+    // update URL hash to point to the details panel
     if (selected !== id) {
+      // open
+      router.push(`#details-${id}`);
       setTimeout(() => {
         const el = document.getElementById(`details-${id}`);
         if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 320);
+    } else {
+      // closing - remove hash
+      router.push(window.location.pathname);
     }
   };
 
