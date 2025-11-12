@@ -46,14 +46,20 @@ export default function MobileMenu() {
               {menuItems.map((item) => {
                 const isActive = pathname === item.href || (typeof window !== 'undefined' && window.location.hash === item.href);
                 const handleClick = (e: any) => {
-                  // allow hash links and internal routes to be pushed via router
+                  if (item.href.startsWith('/')) {
+                    e.preventDefault();
+                    router.push(item.href);
+                    closeMenu();
+                    return;
+                  }
+
                   if (item.href.startsWith('#')) {
                     e.preventDefault();
                     router.push(item.href);
                     closeMenu();
                     return;
                   }
-                  // otherwise navigate normally
+
                   closeMenu();
                 };
 
