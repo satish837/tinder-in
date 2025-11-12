@@ -45,7 +45,7 @@ export default function MobileMenu() {
             <ul className="flex flex-col">
               {menuItems.map((item) => {
                 const isActive = pathname === item.href || (typeof window !== 'undefined' && window.location.hash === item.href);
-                const handleClick = (e: React.MouseEvent) => {
+                const handleClick = (e: any) => {
                   // allow hash links and internal routes to be pushed via router
                   if (item.href.startsWith('#')) {
                     e.preventDefault();
