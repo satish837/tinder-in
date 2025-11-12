@@ -48,7 +48,12 @@ export default function InfoCard({
   return (
     <article className="w-full mx-auto overflow-visible">
       <div
-        className={`bg-white h-full rounded-xl border border-[#bd084d] border-2 shadow-lg px-4 md:px-6 lg:px-8 pt-6 md:py-0 flex flex-col md:flex-row items-center gap-4 md:gap-6 overflow-visible ${
+        role={expandable ? "button" : undefined}
+        tabIndex={expandable ? 0 : undefined}
+        aria-expanded={expandable ? open : undefined}
+        onClick={expandable ? () => setOpen(v => !v) : undefined}
+        onKeyDown={expandable ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setOpen(v=>!v); } } : undefined}
+        className={`bg-white relative h-full rounded-xl border border-[#bd084d] border-2 shadow-lg px-4 md:px-6 lg:px-8 pt-6 md:py-0 flex flex-col md:flex-row items-center gap-4 md:gap-6 overflow-visible ${
           reverse
             ? "md:flex-col-reverse min-h-[280px] md:min-h-[420px] no-scale-image"
             : "min-h-[280px] md:min-h-[380px] scale-image justify-end"
@@ -56,6 +61,7 @@ export default function InfoCard({
         style={{
           boxShadow:
             "0 12px 25px rgba(0, 0, 0, 0.2), 0 4px 10px rgba(0, 0, 0, 0.15)",
+          cursor: expandable ? 'pointer' : undefined
         }}
       >
         <div
@@ -63,12 +69,12 @@ export default function InfoCard({
             reverse ? "md:order-2" : "md:order-1"
           }`}
         >
-          <div className="relative w-full overflow-visible h-[200px] md:h-[480px] -mt-[60px] md:-mt-[100px]">
+          <div className="relative w-full overflow-visible h-[200px] md:h-[480px] -mt-[60px] md:-mt-[100px] pointer-events-none">
             <Image
               src={image}
               alt={title}
               fill
-              className="object-contain"
+              className="object-contain pointer-events-none"
               style={{
                 objectPosition: "bottom",
                 transformOrigin: "bottom center",
@@ -90,14 +96,9 @@ export default function InfoCard({
             dangerouslySetInnerHTML={{ __html: subtitle }}
           />
 
+          {/* Small visual affordance - caret */}
           {expandable && (
-            <button
-              type="button"
-              onClick={() => setOpen((v) => !v)}
-              aria-expanded={open}
-              className="mt-4 mb-2 self-start inline-flex items-center gap-2 rounded-full border-2 border-[#bd084d] px-4 py-2 text-sm md:text-base font-semibold text-[#bd084d] hover:bg-[#bd084d] hover:text-white transition-colors"
-            >
-              {open ? "Hide details" : "Show details"}
+            <span className={`mt-4 mb-2 self-start inline-flex items-center gap-2 text-sm md:text-base font-semibold text-[#bd084d]`}>
               <svg
                 width="16"
                 height="16"
@@ -114,7 +115,20 @@ export default function InfoCard({
                   strokeLinejoin="round"
                 />
               </svg>
-            </button>
+            </span>
+          )}
+
+          {/* Expanded content placed INSIDE the card so the card grows instead of pushing the whole article */}
+          {expandable && (
+            <div
+              className="w-full mt-4 overflow-hidden transition-[max-height] duration-500 ease-in-out"
+              style={{ maxHeight }}
+              aria-hidden={!open}
+            >
+              <div ref={contentRef} className="px-0 md:px-0 pt-0">
+                {expandedContent}
+              </div>
+            </div>
           )}
         </div>
       </div>
