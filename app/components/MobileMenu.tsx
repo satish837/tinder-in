@@ -32,7 +32,7 @@ export default function MobileMenu() {
         <Hamburger
           toggled={isOpen}
           toggle={setIsOpen}
-          size={40}
+          size={32}
           color="#ffffff"
           label="Toggle navigation menu"
           hideOutline

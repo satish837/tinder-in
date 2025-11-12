@@ -60,3 +60,27 @@ body {
 .no-scale-image .cont{
   width: 90%;
 }
+@media (max-width: 768px) {
+  .no-scale-image .cont{
+    width: 100%;
+  }
+  .scale-image img{
+    transform: scale(1.1);
+  }
+  .scale-image .cont h3{
+    width: 100%;
+  }
+  
+  .scale-image .cont p{
+    width: 100%;
+  }
+  .no-scale-image .cont p{
+    width: 100%;
+  }
+  .no-scale-image .cont h3{
+    width: 100%;
+  }
+  .no-scale-image .cont{
+    width: 100%;
+  }
+}
