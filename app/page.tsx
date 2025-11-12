@@ -131,38 +131,56 @@ export default function Page() {
         </div>
 
         <div className="max-w-6xl mx-auto my-12 md:my-20 grid gap-12 md:gap-20">
-          <InfoCard
-            id="emotional"
-            title="Emotional <span class='inline md:block'>GPS</span>"
-            subtitle="Feeling drained? <span class='inline md:block'>Here’s how to refill your cup</span>"
-            image="/emotional-gps-thumb.png"
-            reverse
-            onActivate={(id) => toggle(id)}
-            selected={selected === 'emotional'}
-          />
-          <InfoCard
-            id="playbook"
-            title="Dating <span class='inline md:block'>Playbook</span>"
-            subtitle="Decode dating lingo, spot <span class='inline md:block'>the flags, vibe like a pro</span>"
-            image="/dating-playbook.png"
-            onActivate={(id) => toggle(id)}
-            selected={selected === 'playbook'}
-          />
-          <InfoCard
-            id="safety"
-            title="Dating Safety <span class='inline md:block'>101</span>"
-            subtitle="Safe dating isn’t boring - <span class='inline md:block'>it’s the ultimate flex</span>"
-            image="/dating-safty-thumb.png"
-            reverse
-            onActivate={(id) => toggle(id)}
-            selected={selected === 'safety'}
-          />
-        </div>
+          {
+            // define cards inline so we can render panel directly after each card
+          }
+          {(
+            [
+              {
+                id: 'emotional',
+                title: "Emotional <span class='inline md:block'>GPS</span>",
+                subtitle: "Feeling drained? <span class='inline md:block'>Here’s how to refill your cup</span>",
+                image: '/emotional-gps-thumb.png',
+                reverse: true,
+                content: emotionalContent,
+              },
+              {
+                id: 'playbook',
+                title: "Dating <span class='inline md:block'>Playbook</span>",
+                subtitle: "Decode dating lingo, spot <span class='inline md:block'>the flags, vibe like a pro</span>",
+                image: '/dating-playbook.png',
+                reverse: false,
+                content: null,
+              },
+              {
+                id: 'safety',
+                title: "Dating Safety <span class='inline md:block'>101</span>",
+                subtitle: "Safe dating isn’t boring - <span class='inline md:block'>it’s the ultimate flex</span>",
+                image: '/dating-safty-thumb.png',
+                reverse: true,
+                content: null,
+              },
+            ]
+          ).map((c) => (
+            <div key={c.id}>
+              <InfoCard
+                id={c.id}
+                title={c.title}
+                subtitle={c.subtitle}
+                image={c.image}
+                reverse={c.reverse}
+                onActivate={(id) => toggle(id)}
+                selected={selected === c.id}
+              />
 
-        <div id="details-panel" className="mt-6">
-          <DetailsPanel open={selected === 'emotional'} onClose={() => setSelected(null)}>
-            {emotionalContent}
-          </DetailsPanel>
+              {/* Render details panel immediately after the clicked card */}
+              <div id={`details-${c.id}`} className={`${selected === c.id ? 'mt-6' : ''}`}>
+                <DetailsPanel open={selected === c.id} onClose={() => setSelected(null)}>
+                  {c.content}
+                </DetailsPanel>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
