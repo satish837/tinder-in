@@ -6,7 +6,7 @@ import Hamburger from "hamburger-react";
 
 const menuItems = [
   { label: "Emotional GPS", href: "/emotional-gps" },
-  { label: "Dating Playbook", href: "/safety-syllabus" },
+  { label: "Dating Playbook", href: "/dating-playbook" },
   { label: "Dating Safety 101", href: "/irl-dating" },
 ];
 
@@ -38,7 +38,7 @@ export default function MobileMenu() {
         }`}
         aria-hidden={!isOpen}
       >
-        <div className="relative rounded-3xl shadow-lg overflow-hidden">
+        <div className="relative rounded-b-3xl shadow-lg overflow-hidden">
          
 
           <div className="bg-black">
@@ -71,7 +71,7 @@ export default function MobileMenu() {
                       className={`block px-6 py-4 text-white transition-colors ${
                         isActive
                           ? "bg-white/20"
-                          : "hover:bg-white/10"
+                          : "hover:bg-white/10 hover:text-pinkMain"
                       }`}
                     >
                       {item.label}

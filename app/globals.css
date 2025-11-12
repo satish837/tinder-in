@@ -84,3 +84,89 @@ body {
     width: 100%;
   }
 }
+
+/* Flickity Carousel Custom Styles */
+.carousel {
+  width: 100%;
+  overflow: visible;
+}
+
+.carousel .flickity-viewport {
+  overflow: visible;
+}
+
+.carousel-cell {
+  margin-right: 16px;
+  flex-shrink: 0;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  height: auto;
+}
+
+.carousel-cell.is-selected {
+  opacity: 1;
+}
+
+/* Fix extra height issue */
+.carousel .flickity-viewport::after {
+  content: '';
+  display: none;
+}
+
+/* Flickity Button Styles */
+.flickity-button {
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  transition: all 0.3s ease;
+}
+
+.flickity-button:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.1);
+}
+
+.flickity-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.flickity-button-icon {
+  fill: white;
+}
+
+.flickity-prev-next-button {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.flickity-prev-next-button.previous {
+  left: 10px;
+}
+
+.flickity-prev-next-button.next {
+  right: 10px;
+}
+
+/* Flickity Page Dots */
+.flickity-page-dots {
+  bottom: 20px;
+}
+
+.flickity-page-dots .dot {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  margin: 0 4px;
+  transition: all 0.3s ease;
+}
+
+.flickity-page-dots .dot.is-selected {
+  background: rgba(255, 255, 255, 1);
+  width: 30px;
+  border-radius: 5px;
+}
