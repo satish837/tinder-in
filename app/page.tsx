@@ -173,7 +173,7 @@ export default function Page() {
               />
 
               {/* Render details panel immediately after the clicked card */}
-              <div id={`details-${c.id}`} className={`${selected === c.id ? 'mt-6' : ''}`}>
+              <div id={`details-${c.id}`} className={`${selected === c.id ? 'mt-0' : ''}`}>
                 <DetailsPanel open={selected === c.id} onClose={() => setSelected(null)}>
                   {c.content}
                 </DetailsPanel>
