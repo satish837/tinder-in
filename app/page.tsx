@@ -25,7 +25,7 @@ function DetailsPanel({ open, children, onClose }: { open: boolean; children: Re
   return (
     <div className="w-full max-w-6xl mx-auto px-4 md:px-0">
       <div className="overflow-hidden transition-[max-height] duration-500 ease-in-out" style={{ maxHeight }} aria-hidden={!open}>
-        <div ref={ref} className="pt-6 pb-8">
+        <div ref={ref} className="pt-0 pb-8">
           {open && (
             <div className="bg-white/70 rounded-xl-2 md:rounded-xl shadow-card border border-[#bd084d] p-4 md:p-6 lg:p-8">
               <div className="flex justify-end">
